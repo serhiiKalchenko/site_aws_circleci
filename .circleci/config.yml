@@ -27,7 +27,7 @@ jobs:
             echo "folder 'packages':"
             ls -l ../packages
 
-      - run
+      - run:
           name: Configuring AWS credentials
           command:
           
