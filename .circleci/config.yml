@@ -18,11 +18,8 @@ jobs:
           name: Creating all necessary packages (archives)
           command: |
             mkdir site
-            cd joomla-data
-            sudo tar -cpjf ../site/joomla-data.tar.bz2 .
-            cd ../db-data
-            sudo tar -cpjf ../site/db-data.tar.bz2 .
-            cd /home/circleci/project
+            sudo tar -cpjf site/joomla-data.tar.bz2 joomla-data
+            sudo tar -cpjf site/db-data.tar.bz2 db-data
             cp docker-compose.yml site/
             cp run.sh site/
             cp uninstall.sh site/

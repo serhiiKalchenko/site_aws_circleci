@@ -3,7 +3,7 @@ version: '3.1'
 services:
 
   joomla:
-    image: my/image
+    image: joomla:3.9.22-php7.4-apache
     container_name: joomla-php-apache
     restart: always
     ports:
@@ -26,10 +26,11 @@ services:
       MYSQL_DATABASE: joomla_db
       MYSQL_USER: db_user
       MYSQL_PASSWORD: db_passwd
-      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
     volumes:
       - db:/var/lib/mysql
 
 volumes:
   joomla:
+    external: true
   db:
+    external: true
