@@ -9,6 +9,5 @@ jobs:
       - checkout
 
 workflows:
-  my_workflow:
     jobs:
       - CI_partition:
