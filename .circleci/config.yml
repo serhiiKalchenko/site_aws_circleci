@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: First Step
+          name: Where am I?
           command: |
-            echo 'Hello World!'
-            echo 'This is the delivery pipeline'
+            pwd
+            ls -lah
