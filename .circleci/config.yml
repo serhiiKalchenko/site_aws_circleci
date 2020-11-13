@@ -31,7 +31,7 @@ jobs:
           command:
             scp -r site/ dockeradmin@ec2-18-216-111-124.us-east-2.compute.amazonaws.com:~
 
-      - run
+      - run:
           name: Running the site AWS EC2 instance!
           command: 
             ./run.sh
