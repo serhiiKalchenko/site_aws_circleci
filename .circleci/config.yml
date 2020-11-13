@@ -34,5 +34,6 @@ jobs:
           name: Installing AWS-CLI
           command: |
             aws --version
+            ecs-cli --version
 
 
