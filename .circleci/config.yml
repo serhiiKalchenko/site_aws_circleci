@@ -29,6 +29,7 @@ jobs:
 
       - run
           name: Configuring AWS credentials
+          command:
           
             
             
