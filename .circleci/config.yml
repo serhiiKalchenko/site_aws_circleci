@@ -8,14 +8,14 @@ jobs:
       - checkout
       
       - run:
-          name: Where am I?
+          name: Where am I and Who am I?
           command: |
             pwd
-            ls -lah
+            ls -lAh
             whoami
   
       - run:
-          name: Creating all necessary packages (archives)
+          name: Creating the necessary package (archives)
           command: |
             mkdir site
             sudo tar -cpjf site/joomla-data.tar.bz2 joomla-data
@@ -28,7 +28,11 @@ jobs:
 
       - run:
           name: Connecting & transfering packages to AWS EC2 instance...
-          command: |
-            aws --version
+          command:
             scp -r site/ dockeradmin@ec2-18-216-111-124.us-east-2.compute.amazonaws.com:~
+
+      - run
+          name: Running the site AWS EC2 instance!
+          command: 
+            ./run.sh
 

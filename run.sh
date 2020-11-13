@@ -1,5 +1,14 @@
 #!/bin/bash
 
+##############################
+## running script on server ##
+##############################
+
+# unpack packages
+sudo tar -xpjf joomla-data.tar.bz2
+sudo tar -xpjf db-data.tar.bz2
+
+# prepare volumes & run containers
 docker volume create joomla
 docker volume create db
 sudo rm -r /var/lib/docker/volumes/joomla/_data

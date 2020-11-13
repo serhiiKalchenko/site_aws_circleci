@@ -5,5 +5,3 @@ docker-compose down
 docker volume rm joomla
 
 docker volume rm db
-
-docker volume prune
