@@ -34,5 +34,6 @@ jobs:
           name: Configuring AWS credentials
           command: |
             - aws-cli/install
+            
 
 
