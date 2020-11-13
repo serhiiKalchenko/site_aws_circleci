@@ -25,6 +25,11 @@ jobs:
             cd ../db-data
             sudo tar -cpjf ../packages/db-data.tar.bz2 .
             echo "folder 'packages':"
+            ls -l ../packages
+
+      - run
+          name: Configuring AWS credentials
+          
             
             
             
