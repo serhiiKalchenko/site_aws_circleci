@@ -19,11 +19,11 @@ jobs:
           command: |
             mkdir packages
             cd joomla-data
-            touch joomla-data.tar.bz2
-            sudo tar --exclude=joomla-data.tar.bz2 -cpjf joomla-data.tar.bz2 .
-            ls -l | grep joomla-data.tar.bz2
-            mv joomla-data.tar.bz2 ../packages
+            sudo tar -cpjf ../packages/joomla-data.tar.bz2 .
+            echo "/home/circleci/project/packages:"
             ls -l ../packages
+            cd ../db-data
+            pwd
             
             
             
