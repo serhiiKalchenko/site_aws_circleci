@@ -8,6 +8,3 @@ jobs:
       # job steps
       - checkout
 
-workflows:
-    jobs:
-      - CI_partition:
