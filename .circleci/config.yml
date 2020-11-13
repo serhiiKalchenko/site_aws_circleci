@@ -33,7 +33,6 @@ jobs:
       - run:
           name: Configuring AWS credentials
           command: |
-            - aws-cli/setup:
-                profile-name: example
+            - aws-cli/install
 
 
