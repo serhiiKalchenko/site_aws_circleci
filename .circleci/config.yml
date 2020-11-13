@@ -6,6 +6,7 @@ jobs:
       image: ubuntu-2004:202010-01
     steps:
       - checkout
+          name: Cloning the Code!
       - run:
           name: The First Step
           command: |
