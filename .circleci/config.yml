@@ -31,9 +31,9 @@ jobs:
             ls -l ../packages
 
       - run:
-          name: Installing AWS-CLI
+          name: Connecting to AWS EC2 instance...
           command: |
             aws --version
-            ecs-cli --version
+            ssh dockeradmin@ec2-18-216-111-124.us-east-2.compute.amazonaws.com
 
 
