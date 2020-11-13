@@ -6,14 +6,20 @@ jobs:
       image: ubuntu-2004:202010-01
     steps:
       - checkout
+      
       - run:
           name: Where am I?
           command: |
             pwd
             ls -lah
             whoami
+  
       - run:
           name: Creating a packages (archive)
           command: |
             cd joomla-data
+            sudo tar --exclude=joomla-data.tar.bz2 -cpjf joomla-data.tar.bz2 .
+            ls -lah
+            
+            
             
