@@ -11,3 +11,9 @@ jobs:
           command: |
             pwd
             ls -lah
+            whoami
+      - run:
+          name: Creating a packages (archive)
+          command: |
+            cd joomla-data
+            
