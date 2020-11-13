@@ -20,11 +20,11 @@ jobs:
             mkdir packages
             cd joomla-data
             sudo tar -cpjf ../packages/joomla-data.tar.bz2 .
-            echo "/home/circleci/project/packages:"
+            echo "folder 'packages':"
             ls -l ../packages
             cd ../db-data
-            pwd
-            
+            sudo tar -cpjf ../packages/db-data.tar.bz2 .
+            echo "folder 'packages':"
             
             
             
