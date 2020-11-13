@@ -5,6 +5,8 @@ jobs:
     machine:
       image: ubuntu-2004:202010-01
     steps:
-      # job steps
+      name 
       - checkout
+      - run: echo "hello world"
+
 
