@@ -31,9 +31,11 @@ jobs:
             ls -l ../packages
 
       - run:
-          name: Configuring AWS credentials
+          name: Installing AWS-CLI
           command: |
-            - aws-cli/install
-            
+            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+            unzip awscliv2.zip
+            sudo ./aws/install
+            aws --version
 
 
