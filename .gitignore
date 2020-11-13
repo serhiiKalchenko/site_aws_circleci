@@ -1,5 +1,2 @@
-Dockerfile
-docker-compose.yml.*
-extension/
-joomla-data.tar.bz2
+tmp
 

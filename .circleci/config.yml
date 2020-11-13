@@ -1,4 +1,5 @@
 version: 2.1
+
 jobs:
   CI_partition:
     machine:
@@ -6,14 +7,8 @@ jobs:
     steps:
       # job steps
       - checkout
-  CD_partition:
-    machine:
-      image: ubuntu-2004:202010-01
 
 workflows:
   my_workflow:
     jobs:
       - CI_partition:
-      - CD_partition:
-          requires:
-            - CI_partition:
