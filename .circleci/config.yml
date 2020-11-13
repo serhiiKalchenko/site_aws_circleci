@@ -22,9 +22,7 @@ jobs:
             sudo tar -cpjf ../site/joomla-data.tar.bz2 .
             cd ../db-data
             sudo tar -cpjf ../site/db-data.tar.bz2 .
-            cd ~
-            pwd
-            ls -lAh
+            cd /home/circleci/project
             cp docker-compose.yml site/
             cp run.sh site/
             cp uninstall.sh site/
