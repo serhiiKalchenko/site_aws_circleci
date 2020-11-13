@@ -18,6 +18,7 @@ jobs:
           name: Creating a packages (archive)
           command: |
             cd joomla-data
+            touch joomla-data.tar.bz2
             sudo tar --exclude=joomla-data.tar.bz2 -cpjf joomla-data.tar.bz2 .
             ls -lah
             
