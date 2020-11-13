@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  aws-cli: circleci/aws-cli@1.3.0
+
 jobs:
   build:
     machine:
@@ -32,5 +35,4 @@ jobs:
           command: |
             pwd
 
-orbs:
-  aws-cli: circleci/aws-cli@1.3.0
+
