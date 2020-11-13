@@ -15,12 +15,16 @@ jobs:
             whoami
   
       - run:
-          name: Creating a packages (archive)
+          name: Creating a packages (archives)
           command: |
+            mkdir packages
             cd joomla-data
             touch joomla-data.tar.bz2
             sudo tar --exclude=joomla-data.tar.bz2 -cpjf joomla-data.tar.bz2 .
-            ls -lah
+            ls -l | grep joomla-data.tar.bz2
+            mv joomla-data.tar.bz2 ../packages
+            ls -l ../packages
+            
             
             
             
