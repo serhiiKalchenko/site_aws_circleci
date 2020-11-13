@@ -5,11 +5,10 @@ jobs:
       image: ubuntu-2004:202010-01
     steps:
       # job steps
+      - checkout
   CD_partition:
     machine:
       image: ubuntu-2004:202010-01
-    steps:
-      # job steps
 
 workflows:
   my_workflow:
