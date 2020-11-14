@@ -15,16 +15,16 @@ Pipeline:
     - docker
     - docker-compose
 3. Configure AWS instance
-  	- Create a <user> with 'sudo no password' priveleges (in my case <user>=dockeradmin)
+		- Create a 'user' with 'sudo no:password' priveleges (in my case 'user'=dockeradmin)
 4. Generate SSH keys (private, public)
-  	- copy rsa.pub into <user>/.ssh/authorized_keys
+		- copy rsa.pub into 'user'/.ssh/authorized_keys
 5. CircleCI ('Project Settings'):
-  	- Add host (public dns name of EC2 instance) and private SSH key for it.
+		- Add host (public dns name of EC2 instance) and private SSH key for it.
 
 # Important Things You Need To Know
   - all permissions and ownership in dirs: 'joomla-data' & 'db-data' are preserve, 
   - so you should work with git with sudo (sudo git add, commit, push...)
-  - you can make an alias in bash: 
-  - nano ~/.bashrc; alias gitpush='git commit -a -m "update: config.yml" ; git push origin main'
+  - you can make an alias in bash:
+  	- nano ~/.bashrc; alias gitpush='git commit -a -m "update: config.yml" ; git push origin main'
 
 # Have fun!;)  
