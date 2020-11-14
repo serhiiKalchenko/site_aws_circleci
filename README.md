@@ -1,10 +1,10 @@
 # site_aws_circleci [![serhiiKalchenko](https://circleci.com/gh/serhiiKalchenko/site_aws_circleci.svg?style=svg)](https://app.circleci.com/pipelines/github/serhiiKalchenko/site_aws_circleci)
 
-CI/CD Project!
+The CI/CD Project!
 
 Deploy site on Joomla using CircleCI!
 
-**Pipeline:**
+## Pipeline:
 1. Creating the necessary package (archives).
 2. Connecting & transfering package to AWS EC2 instance
 3. Running the site on AWS EC2 instance!
@@ -22,9 +22,15 @@ Deploy site on Joomla using CircleCI!
 		* Add host (public dns name of EC2 instance) and private SSH key for it.
 
 ## Important Things You Need To Know
-  * all permissions and ownership in dirs: 'joomla-data' & 'db-data' are preserve, 
+  * all permissions and ownership in dirs: 'joomla-data' & 'db-data' are preserved, 
   * so you should work with git with sudo (sudo git add, commit, push...)
   * you can make an alias in bash:
   	* nano ~/.bashrc; alias gitpush='git commit -a -m "update: config.yml" ; git push origin main'
+
+## Site configuration:
+	* credentials for administration (http://your_ip_address/administrator): admin/admin
+	* The site (CMS Joomla) is absolutely clean, after installation as is 
+	* (only credentials to database are configured: docker-compose.yml)
+	* dir joomla-data/sample/ - just sample of html-pages
 
 ### Have fun!:wink::hugs::blush:  
