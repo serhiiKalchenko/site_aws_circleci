@@ -25,7 +25,7 @@ Deploy site on Joomla using CircleCI!
   * all permissions and ownership in dirs: 'joomla-data' & 'db-data' are preserved, 
   * so you should work with git with sudo (sudo git add, commit, push...)
   * you can make an alias in bash:
-  	* nano ~/.bashrc; alias gitpush='git commit -a -m "update: config.yml" ; git push origin main'
+  	* nano ~/.bashrc; alias gitpush='git commit -a -m "update..." ; git push origin main'
 
 ## Site configuration:
 	* credentials for administration (http://your_ip_address/administrator): admin/admin

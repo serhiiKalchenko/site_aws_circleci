@@ -5,7 +5,7 @@ jobs:
     machine:
       image: ubuntu-2004:202010-01
     environment:
-      EC2_INSTANCE: ec2-3-137-158-53.us-east-2.compute.amazonaws.com
+      EC2_INSTANCE: ec2-3-137-201-59.us-east-2.compute.amazonaws.com
     steps:
       - checkout
       
@@ -19,12 +19,8 @@ jobs:
       - run:
           name: Creating the necessary package (archives)
           command: |
-            mkdir site
             sudo tar -cpjf site/joomla-data.tar.bz2 joomla-data
             sudo tar -cpjf site/db-data.tar.bz2 db-data
-            cp docker-compose.yml site/
-            cp run.sh site/
-            cp uninstall.sh site/
             realpath site
             ls -lAh site/ 
 
