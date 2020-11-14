@@ -17,7 +17,8 @@ Pipeline:
 3. Configure AWS instance
   - Create a <user> with 'sudo no password' priveleges (in my case <user>=dockeradmin)
 4. Generate SSH keys (private, public)
-  - rsa.pub put into <user>/.ssh/authorized
+  - rsa.pub put into <user>/.ssh/authorized_keys
+
 5. CircleCI ('Project Settings'):
   - Add host (public dns name of EC2 instance) and private SSH key for it.
 
