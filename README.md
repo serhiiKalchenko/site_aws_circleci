@@ -1,5 +1,4 @@
-# site_aws_circleci
-[![serhiiKalchenko](https://circleci.com/gh/serhiiKalchenko/site_aws_circleci.svg?style=svg)](https://app.circleci.com/pipelines/github/serhiiKalchenko/site_aws_circleci)
+# site_aws_circleci [![serhiiKalchenko](https://circleci.com/gh/serhiiKalchenko/site_aws_circleci.svg?style=svg)](https://app.circleci.com/pipelines/github/serhiiKalchenko/site_aws_circleci)
 
 CI/CD Project!
 
