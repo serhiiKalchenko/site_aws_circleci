@@ -18,19 +18,17 @@ commands: # a reusable command with parameters
          - run:
              name: Connecting & transfering package to AWS EC2 instance...
              command:
-               scp -r site/ dockeradmin@${EC2_INSTANCE}:~
+               scp -r site/ dockeradmin@<<parameters.ip_address>>:~
 
          - run:
              name: Running the site on AWS EC2 instance!
              command: 
-               ssh dockeradmin@${EC2_INSTANCE} "cd site/ && ./run.sh"
+               ssh dockeradmin@<<parameters.ip_address>> "cd site/ && ./run.sh"
 
 jobs:
   build:
     machine:
       image: ubuntu-2004:202010-01
-    environment:
-      EC2_INSTANCE: 3.134.114.165
     steps:
       - checkout
       - run:
@@ -39,7 +37,6 @@ jobs:
             pwd
             ls -lAh
             whoami
-            
             
       - deploy:
           ip_address: "3.134.114.165"
