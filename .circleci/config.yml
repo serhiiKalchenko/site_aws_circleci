@@ -28,7 +28,6 @@ version: 2.1
 jobs:
   Deploy_Joomla_site_on_AWS:
     docker: cimg/base:edge
-      image: ubuntu-2004:202010-01
     steps:
       - checkout
       - run:
