@@ -42,7 +42,7 @@ jobs:
           ip_address: "3.134.114.165"
           
 workflows:
-  version: 2
-  My_Workflow:
-    jobs:
-      - build:
+ version: 2
+ workflow:
+   jobs:
+     - build:
