@@ -17,7 +17,7 @@ commands: # a reusable command with parameters
          - run:
              name: Connecting & transfering package to AWS EC2 instance...
              command: |
-               echo "SHA256:OFeSr8fo72yov6/92GOeBd6z6Q9xt1bWk4W0AHExvg0." >> ~/.ssh/known_hosts
+               echo "SHA256:OFeSr8fo72yov6/92GOeBd6z6Q9xt1bWk4W0AHExvg0" >> ~/.ssh/known_hosts
                scp -r site/ dockeradmin@<<parameters.ip_address>>:~
 
          - run:
