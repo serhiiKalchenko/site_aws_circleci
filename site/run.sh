@@ -4,6 +4,9 @@
 ## running script on server ##
 ##############################
 
+# if container - running, delete it!
+[ "$(docker ps -a | grep joomla)" ] && ./uninstall.sh
+
 # unpack packages
 sudo tar -xpjf joomla-data.tar.bz2
 sudo tar -xpjf db-data.tar.bz2
