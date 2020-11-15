@@ -27,7 +27,8 @@ commands: # a reusable command with parameters
 version: 2.1
 jobs:
   Deploy_Joomla_site_on_AWS:
-    docker: cimg/base:edge
+    docker: 
+      - cimg/base:edge
     steps:
       - checkout
       - run:
