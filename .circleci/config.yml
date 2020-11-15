@@ -27,7 +27,7 @@ commands: # a reusable command with parameters
 version: 2.1
 jobs:
   Deploy_Joomla_site_on_AWS:
-    machine:
+    docker: cimg/base:edge
       image: ubuntu-2004:202010-01
     steps:
       - checkout
