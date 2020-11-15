@@ -1,22 +1,14 @@
 version: 2.1
 
-jobs:
-  build:
-    machine:
-      image: ubuntu-2004:202010-01
-    environment:
-      EC2_INSTANCE: ec2-3-137-201-59.us-east-2.compute.amazonaws.com
-    steps:
-      - checkout
-      
-      - run:
-          name: Where am I and Who am I?
-          command: |
-            pwd
-            ls -lAh
-            whoami
-  
-      - run:
+commands: # a reusable command with parameters
+   deploy:
+      parameters:
+         ip_address:
+           default: "localhost"
+           type: string
+      steps:
+         
+         - run:
           name: Creating the necessary package (archives)
           command: |
             sudo tar -cpjf site/joomla-data.tar.bz2 joomla-data
@@ -33,4 +25,25 @@ jobs:
           name: Running the site on AWS EC2 instance!
           command: 
             ssh dockeradmin@${EC2_INSTANCE} "cd site/ && ./run.sh"
+
+jobs:
+  build:
+    machine:
+      image: ubuntu-2004:202010-01
+    environment:
+      EC2_INSTANCE: ec2-3-137-201-59.us-east-2.compute.amazonaws.com
+    steps:
+      - checkout
+      
+      - run:
+          name: Where am I and Who am I?
+          command: |
+            pwd
+            ls -lAh
+            whoami
+            
+      - deploy:
+          ip_address: "My-Name"
+  
+
 
