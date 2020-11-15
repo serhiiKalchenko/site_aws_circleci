@@ -39,4 +39,7 @@ I have different versions of config.yml for better understanding in educational 
   * config.yml - config with using 'parameters'
   * All configs are working!;)
 
-### Have fun!:wink::hugs::blush:  
+### Have a question or feedback?
+ * please open an Issue in this repository:wink:
+
+### Have fun!:hugs::blush:  
