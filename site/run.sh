@@ -4,6 +4,9 @@
 ## running script on server ##
 ##############################
 
+# if site/ exist - delete it
+[ -d "site" ] && echo "Directory "site" exists!"
+
 # unpack packages
 sudo tar -xpjf joomla-data.tar.bz2
 sudo tar -xpjf db-data.tar.bz2
