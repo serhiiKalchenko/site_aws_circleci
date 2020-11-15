@@ -26,7 +26,7 @@ commands: # a reusable command with parameters
 
 version: 2.1
 jobs:
-  CI_CD_joomla_site:
+  Deploy_Joomla_site_on_AWS:
     machine:
       image: ubuntu-2004:202010-01
     steps:
@@ -45,4 +45,4 @@ workflows:
   version: 2
   my_workflow:
     jobs:
-      - CI_CD_joomla_site
+      - Deploy_Joomla_site_on_AWS
