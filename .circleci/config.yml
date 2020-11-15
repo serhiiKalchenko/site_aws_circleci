@@ -28,7 +28,7 @@ version: 2.1
 jobs:
   Deploy_Joomla_site_on_AWS:
     docker: 
-      - cimg/base:2020.11
+      - image: cimg/base:edge
     steps:
       - checkout
       - run:
