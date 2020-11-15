@@ -4,9 +4,6 @@
 ## running script on server ##
 ##############################
 
-# if site/ exist - delete it
-[ -d "site" ] && rm -rf site/
-
 # unpack packages
 sudo tar -xpjf joomla-data.tar.bz2
 sudo tar -xpjf db-data.tar.bz2
