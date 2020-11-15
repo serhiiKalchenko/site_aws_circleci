@@ -4,6 +4,7 @@ commands: # a reusable command with parameters
    deploy:
       parameters:
          ip_address:
+           description: ip address of your EC2 instance
            default: "localhost"
            type: string
       steps:  
