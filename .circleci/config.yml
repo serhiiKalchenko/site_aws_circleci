@@ -6,25 +6,24 @@ commands: # a reusable command with parameters
          ip_address:
            default: "localhost"
            type: string
-      steps:
-         
+      steps:  
          - run:
-          name: Creating the necessary package (archives)
-          command: |
-            sudo tar -cpjf site/joomla-data.tar.bz2 joomla-data
-            sudo tar -cpjf site/db-data.tar.bz2 db-data
-            realpath site
-            ls -lAh site/ 
+             name: Creating the necessary package (archives)
+             command: |
+               sudo tar -cpjf site/joomla-data.tar.bz2 joomla-data
+               sudo tar -cpjf site/db-data.tar.bz2 db-data
+               realpath site
+               ls -lAh site/ 
 
-      - run:
-          name: Connecting & transfering package to AWS EC2 instance...
-          command:
-            scp -r site/ dockeradmin@${EC2_INSTANCE}:~
+         - run:
+             name: Connecting & transfering package to AWS EC2 instance...
+             command:
+               scp -r site/ dockeradmin@${EC2_INSTANCE}:~
 
-      - run:
-          name: Running the site on AWS EC2 instance!
-          command: 
-            ssh dockeradmin@${EC2_INSTANCE} "cd site/ && ./run.sh"
+         - run:
+             name: Running the site on AWS EC2 instance!
+             command: 
+               ssh dockeradmin@${EC2_INSTANCE} "cd site/ && ./run.sh"
 
 jobs:
   build:
@@ -34,7 +33,6 @@ jobs:
       EC2_INSTANCE: ec2-3-137-201-59.us-east-2.compute.amazonaws.com
     steps:
       - checkout
-      
       - run:
           name: Where am I and Who am I?
           command: |
@@ -43,7 +41,7 @@ jobs:
             whoami
             
       - deploy:
-          ip_address: "My-Name"
+          ip_address: "3.134.114.165"
   
 
 
