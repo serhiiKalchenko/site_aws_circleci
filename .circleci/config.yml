@@ -14,10 +14,6 @@ commands: # a reusable command with parameters
                realpath site
                ls -lAh site/
                
-         - add_ssh_keys:
-             fingerprints:
-              - "b1:f2:1c:98:df:9b:e9:f9:34:4c:30:68:8e:67:9c:b8"
-
          - run:
              name: Connecting & transfering package to AWS EC2 instance...
              command: |
