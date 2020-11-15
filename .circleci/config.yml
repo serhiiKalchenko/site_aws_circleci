@@ -16,7 +16,7 @@ commands: # a reusable command with parameters
                
          - add_ssh_keys:
              fingerprints:
-              - "YUPEXBeCzz8xi9ZMm4KZm1iI/N1oT8C/MT4GPPlcDtg"
+              - "OFeSr8fo72yov6/92GOeBd6z6Q9xt1bWk4W0AHExvg0"
 
          - run:
              name: Connecting & transfering package to AWS EC2 instance...
