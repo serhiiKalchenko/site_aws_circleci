@@ -37,6 +37,6 @@ Deploy site on Joomla using CircleCI!
 I have different versions of config.yml for better understanding in educational purposes.
   * config.yml.v1 - simplest (straightforward) config
   * config.yml - config with using 'parameters'
-All configs are working!;)
+  * All configs are working!;)
 
 ### Have fun!:wink::hugs::blush:  
