@@ -12,12 +12,15 @@ commands: # a reusable command with parameters
                sudo tar -cpjf site/joomla-data.tar.bz2 joomla-data
                sudo tar -cpjf site/db-data.tar.bz2 db-data
                realpath site
-               ls -lAh site/ 
+               ls -lAh site/
+               
+         - add_ssh_keys:
+             fingerprints:
+              - "92:83:a1:ca:51:be:b1:6a:24:cc:a9:a7:c9:99:ed:e9"
 
          - run:
              name: Connecting & transfering package to AWS EC2 instance...
              command: |
-               echo "OFeSr8fo72yov6/92GOeBd6z6Q9xt1bWk4W0AHExvg0" >> ~/.ssh/known_hosts
                scp -r site/ dockeradmin@<<parameters.ip_address>>:~
 
          - run:
