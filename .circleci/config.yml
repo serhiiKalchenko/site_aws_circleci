@@ -1,5 +1,3 @@
-version: 2.1
-
 commands: # a reusable command with parameters
    deploy:
       parameters:
@@ -26,6 +24,7 @@ commands: # a reusable command with parameters
              command: 
                ssh dockeradmin@<<parameters.ip_address>> "cd site/ && ./run.sh"
 
+version: 2.1
 jobs:
   build:
     machine:
