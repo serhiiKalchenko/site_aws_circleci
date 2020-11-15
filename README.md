@@ -32,5 +32,11 @@ Deploy site on Joomla using CircleCI!
 	* The site (CMS Joomla) is absolutely clean, after installation as is 
 	* (only credentials to database are configured: docker-compose.yml)
 	* dir joomla-data/sample/ - just sample of html-pages
+	
+## .circleci
+I have different versions of config.yml for better understanding in educational purposes.
+  * config.yml.v1 - simplest (straightforward) config
+  * config.yml - config with using 'parameters'
+All configs are working!;)
 
 ### Have fun!:wink::hugs::blush:  
