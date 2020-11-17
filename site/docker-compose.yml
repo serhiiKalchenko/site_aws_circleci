@@ -3,7 +3,7 @@ version: '3.1'
 services:
 
   joomla:
-    image: joomla:3.9.22-php7.4-apache
+    image: joomla:php7.4-apache
     container_name: joomla-php-apache
     restart: always
     ports:
@@ -19,13 +19,14 @@ services:
       - db
 
   db:
-    image: mysql:5.7
+    image: mysql:5.7.32
     container_name: db-joomla
     restart: always
     environment:
       MYSQL_DATABASE: joomla_db
       MYSQL_USER: db_user
       MYSQL_PASSWORD: db_passwd
+      MYSQL_ROOT_PASSWORD: root
     volumes:
       - db:/var/lib/mysql
 

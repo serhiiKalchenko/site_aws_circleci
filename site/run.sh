@@ -4,18 +4,60 @@
 ## running script on server ##
 ##############################
 
-# if container - running, delete it!
-[ "$(docker ps -a | grep joomla)" ] && ./uninstall.sh
+#if volume 'joomla' already exist - stop containers &  delete only volume 'joomla'!
+[ "$(docker volume ls | grep joomla)" ] && ./uninstall.sh
 
-# unpack packages
-sudo tar -xpjf joomla-data.tar.bz2
-sudo tar -xpjf db-data.tar.bz2
-
-# prepare volumes & run containers
+echo "Creating volume 'joomla'..."
 docker volume create joomla
-docker volume create db
-sudo rm -r /var/lib/docker/volumes/joomla/_data
-sudo cp -rp joomla-data/ /var/lib/docker/volumes/joomla/_data
-sudo rm -r /var/lib/docker/volumes/db/_data
-sudo cp -rp db-data/ /var/lib/docker/volumes/db/_data
+
+
+joomla_data="/var/lib/docker/volumes/joomla/_data"
+#sudo mkdir $joomla_data
+#sudo chown www-data:www-data $joomla_data
+
+# checking if archive exist
+if [ -f joomla-data.tar.bz2 ]; then
+  echo "Extracting data from 'joomla-data.tar.bz2' to volume 'joomla'..."
+  sudo tar -xpjf joomla-data.tar.bz2 -C $joomla_data
+else
+  echo "Archive 'joomla-data.tar.bz2' does not exist!"
+  echo "Site launching is impossible..."
+  exit
+fi
+
+#mkdir joomla-data
+#sudo tar -xpjf joomla-data.tar.bz2 -C joomla-data
+
+#sudo rm -r /var/lib/docker/volumes/joomla/_data
+#sudo cp -rp joomla-data/ /var/lib/docker/volumes/joomla/_data
+
+# just for first launch of containers 
+[ "$(docker volume ls | grep db)" ] && echo "Volume 'db' exist..." || docker volume create db
+
+#sudo rm -r /var/lib/docker/volumes/db/_data
+#sudo cp -rp db-data/ /var/lib/docker/volumes/db/_data
+
+
 docker-compose up -d --build
+
+sleep 15 # time needed for mounting volumes... for getting instalation/ dir available
+# remove installation/ dir for running site
+
+# checking if installation/ dir exist...
+install=/var/lib/docker/volumes/joomla/_data/installation
+if sudo test -d $install; then
+  sudo rm -rf $install 
+  echo "'installation/' has been removed..."  
+else
+  echo "'installation/' does not exist..."
+fi
+
+
+
+if [ -f "joomla_db.sql" ]; then
+      echo "Restoring DB from a backup: 'joomla_db.sql'..."
+      ./restore-db.sh
+else
+      echo "Database has initial state..."
+
+fi
