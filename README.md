@@ -25,7 +25,7 @@ Deploy site on Joomla using CircleCI!
    * copy rsa.pub into 'user'/.ssh/authorized_keys
 5. CircleCI ('Project Settings'):
    * Add host (public dns name of EC2 instance) and private SSH key for it.
-6. Do an **Initial launch** the site as described in Issue #1 
+6. Do an **Initial launch** the site as described in [Issue #1](https://github.com/serhiiKalchenko/site_aws_circleci/issues/1)
   
 
 ## Important Things You Need To Know
