@@ -1,7 +1,7 @@
 parameters:
   ip_address:
      description: ip address of your EC2 instance
-     default: "localhost"
+     default: "3.15.176.252"
      type: string
 
 executors: # you can deploy using all of these executors;)
