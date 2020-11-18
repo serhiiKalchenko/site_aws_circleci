@@ -29,9 +29,9 @@ Deploy site on Joomla using CircleCI!
 6. Do an **Initial launch** the site as described in [Issue #1](https://github.com/serhiiKalchenko/site_aws_circleci/issues/1)
   
 
-## Important Things You Need To Know
-  * all permissions and ownership in dirs: 'joomla-data' & 'db-data' are preserved, 
-  * so you should work with git with sudo (sudo git add, commit, push...)
+## Some features of the projects & suggestions
+  * all permissions and ownership in archive `joomla-data.tar.bz2` are preserved, 
+  * so you should work with git as `sudo` (sudo git add, commit, push...)
   * you can make an alias in bash:
   	* nano ~/.bashrc; alias gitpush='git commit -a -m "update..." ; git push origin main'
 
