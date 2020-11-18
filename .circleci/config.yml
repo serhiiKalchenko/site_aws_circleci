@@ -9,6 +9,9 @@ executors: # you can deploy using all of these executors;)
         default: ""
     docker:
       - image: cimg/base:stable<< parameters.version >>
+  vm_ubuntu:
+     machine:
+      image: ubuntu-2004:202010-01
 
 commands: # a reusable command with parameters
    deploy:
@@ -61,10 +64,19 @@ workflows:
   my_workflow:
     jobs:
       - Deploy_Joomla_site_on_AWS:
+          name: Deploy_on_docker_base_edge
           env: docker_base_edge
+      - Make_approval_and_go_on!: 
+          type: approval 
       - Deploy_Joomla_site_on_AWS:
+          name: Deploy_on_docker_base_stable
           env: 
             name: docker_base_stable
             version: "-18.04"
-          requires:
-            - Deploy_Joomla_site_on_AWS
+      - Make_approval_and_go_on!: 
+          type: approval
+      - Deploy_Joomla_site_on_AWS:
+          name: Deploy_on_VM_Ubuntu_2004
+          env: vm_ubuntu
+          
+            
