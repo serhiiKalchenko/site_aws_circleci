@@ -4,5 +4,6 @@
 docker-compose down
 
 #remove volume 'joomla'
+echo "Removing volume 'joomla':"
 docker volume rm joomla
 
