@@ -10,7 +10,7 @@ Deploy site on Joomla using CircleCI!
 - [ ] one job with parameter
 
 ## Pipeline:
-1. Creating the necessary package (archives).
+1. Checkout (git clone) the code to CircleCI environment.
 2. Connecting & transfering package to AWS EC2 instance.
 3. Running the site on AWS EC2 instance!
 
@@ -47,6 +47,6 @@ I have different versions of config.yml for better understanding in educational 
 ### Have a question or feedback?
  * please open an Issue in this repository:wink:
 
-### Have fun!:hugs::blush:
+### Have fun!:hugs:
 
 
