@@ -6,8 +6,9 @@ Deploy site on Joomla using CircleCI!
 
 ## Task Lists
 - [x] one command with parameter
-- [ ] one executor with parameter
+- [x] one executor with parameter
 - [x] one job with parameter
+- [x] one global (pipeline) parameter
 
 ## Pipeline:
 1. Checkout (git clone) the code to CircleCI environment.

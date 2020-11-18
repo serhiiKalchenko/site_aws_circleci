@@ -1,3 +1,9 @@
+parameters:
+  ip_address:
+     description: ip address of your EC2 instance
+     default: "localhost"
+     type: string
+
 executors: # you can deploy using all of these executors;)
   docker_base_edge:
     docker:
@@ -10,37 +16,40 @@ executors: # you can deploy using all of these executors;)
     docker:
       - image: cimg/base:stable<< parameters.version >>
   vm_ubuntu:
+     parameters:
+       image:
+         type: string
+         default: "ubuntu-2004:202010-01"
      machine:
-      image: ubuntu-2004:202010-01
+       image: << parameters.image >>
 
 commands: # a reusable command with parameters
    deploy:
       parameters:
-         ip_address:
-           description: ip address of your EC2 instance
-           default: "localhost"
+         user:
+           description: user on EC2 instance
            type: string
       steps:  
          - run:
              name: Preparing SSH connection for transfering package [site/]...
              command: |
-               ssh-keyscan -t ecdsa <<parameters.ip_address>> >> ~/.ssh/known_hosts
+               ssh-keyscan -t ecdsa << pipeline.parameters.ip_address >> >> ~/.ssh/known_hosts
                echo "~/.ssh/know_hosts"
                cat ~/.ssh/known_hosts
 
          - run:
              name: Transfering package [site/] to AWS EC2 instance...
              command:
-               scp -r site/ dockeradmin@<<parameters.ip_address>>:~
+               scp -r site/ << parameters.user >>@<< pipeline.parameters.ip_address >>:~
 
          - run:
              name: Running the site on AWS EC2 instance!
              command: 
-               ssh dockeradmin@<<parameters.ip_address>> "cd site/ && ./run.sh"
+               ssh << parameters.user >>@<< pipeline.parameters.ip_address >> "cd site/ && ./run.sh"
 
 version: 2.1
 jobs:
-  Deploy_Joomla_site_on_AWS:
+  Deploy_using_container_environment:
     parameters:
       env:
         type: executor
@@ -57,26 +66,41 @@ jobs:
             cat /etc/os-release
             
       - deploy:
-          ip_address: "3.15.176.252"
+          user: "dockeradmin"
+
+  Deploy_using_VM_environment:
+    parameters:
+      env:
+        type: executor
+    executor: << parameters.env >>
+    steps:
+      - checkout
+      - run:
+          name: Where am I and Who am I?
+          command: |
+            pwd
+            ls -lAh
+            whoami
+            echo "OS:"
+            cat /etc/os-release
+            
+      - deploy:
+          user: "dockeradmin"
           
 workflows:
   version: 2
   my_workflow:
     jobs:
-      - Deploy_Joomla_site_on_AWS:
-          name: Deploy_on_docker_base_edge
-          env: docker_base_edge
-      - Make_approval_and_go_on!: 
-          type: approval 
-      - Deploy_Joomla_site_on_AWS:
-          name: Deploy_on_docker_base_stable
-          env: 
+      - Deploy_using_container_environment:
+          env:
             name: docker_base_stable
-            version: "-18.04"
-      - Make_approval_and_go_on!: 
-          type: approval
-      - Deploy_Joomla_site_on_AWS:
-          name: Deploy_on_VM_Ubuntu_2004
-          env: vm_ubuntu
+            version: "-18:04"
+            
+      - Deploy_using_VM_environment:
+          env: 
+            name: vm_ubuntu
+            image: "ubuntu-1604:202010-01"
+          requires:
+            - Deploy_using_container_environment
           
             
