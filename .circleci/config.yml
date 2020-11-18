@@ -92,13 +92,11 @@ workflows:
   my_workflow:
     jobs:
       - Deploy_using_container_environment:
-          env:
-            name: docker_base_stable
-            version: "-18.04"
+          env: docker_base_stable 
             
       - Deploy_using_VM_environment:
-          env: 
-            name: vm_ubuntu
+          env:
+            name: vm_ubuntu 
             image: "ubuntu-1604:202010-01"
           requires:
             - Deploy_using_container_environment
