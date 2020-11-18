@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.32, for Linux (x86_64)
 --
--- Host: localhost    Database: 
+-- Host: db    Database: 
 -- ------------------------------------------------------
 -- Server version	5.7.32
 
