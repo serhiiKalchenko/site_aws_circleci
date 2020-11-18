@@ -3,8 +3,12 @@ executors: # you can deploy using all of these executors;)
     docker:
       - image: cimg/base:edge
   docker_base_stable:
+    parameters:
+      image:
+        type: string
+        default: cimg/base:stable
     docker:
-      - image: cimg/base:stable
+      - image: << parameters.image >>
 
 commands: # a reusable command with parameters
    deploy:
