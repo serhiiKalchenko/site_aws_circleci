@@ -10,7 +10,7 @@ Deploy site on Joomla using CircleCI!
 - [ ] one job with parameter
 
 ## Pipeline:
-1. Creating the necessary package (archives).
+1. Checkout (git clone) the code to CircleCI environment.
 2. Connecting & transfering package to AWS EC2 instance.
 3. Running the site on AWS EC2 instance!
 
@@ -25,6 +25,8 @@ Deploy site on Joomla using CircleCI!
    * copy rsa.pub into 'user'/.ssh/authorized_keys
 5. CircleCI ('Project Settings'):
    * Add host (public dns name of EC2 instance) and private SSH key for it.
+6. Do an **Initial launch** the site as described in [Issue #1](https://github.com/serhiiKalchenko/site_aws_circleci/issues/1)
+  
 
 ## Important Things You Need To Know
   * all permissions and ownership in dirs: 'joomla-data' & 'db-data' are preserved, 
@@ -47,6 +49,6 @@ I have different versions of config.yml for better understanding in educational 
 ### Have a question or feedback?
  * please open an Issue in this repository:wink:
 
-### Have fun!:hugs::blush:
+### Have fun!:hugs:
 
 
