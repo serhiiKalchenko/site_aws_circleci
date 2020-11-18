@@ -15,6 +15,7 @@ joomla_data="/var/lib/docker/volumes/joomla/_data"
 
 # checking if archive 'joomla-data.tar.bz2' exist...
 if [ -f joomla-data.tar.bz2 ]; then
+  echo "Launching site from archive: 'joomla-data.tar.bz2'..."
   echo "Extracting data from 'joomla-data.tar.bz2' to volume 'joomla'..."
   sudo tar -xpjf joomla-data.tar.bz2 -C $joomla_data
 else
