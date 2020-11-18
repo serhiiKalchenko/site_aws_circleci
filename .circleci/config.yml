@@ -7,20 +7,15 @@ commands: # a reusable command with parameters
            type: string
       steps:  
          - run:
-             name: Creating the necessary package (archives)
-             command: |
-               sudo tar -cpjf site/joomla-data.tar.bz2 joomla-data
-               sudo tar -cpjf site/db-data.tar.bz2 db-data
-               realpath site
-               ls -lAh site/
-               
-               
-         - run:
-             name: Connecting & transfering package to AWS EC2 instance...
+             name: Preparing SSH connection for transfering package [site/]...
              command: |
                ssh-keyscan -t ecdsa <<parameters.ip_address>> >> ~/.ssh/known_hosts
                echo "~/.ssh/know_hosts"
                cat ~/.ssh/known_hosts
+
+         - run:
+             name: Transfering package [site/] to AWS EC2 instance...
+             command:
                scp -r site/ dockeradmin@<<parameters.ip_address>>:~
 
          - run:
@@ -43,7 +38,7 @@ jobs:
             whoami
             
       - deploy:
-          ip_address: "3.134.114.165"
+          ip_address: "3.15.176.252"
           
 workflows:
   version: 2

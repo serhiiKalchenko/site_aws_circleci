@@ -12,10 +12,8 @@ docker volume create joomla
 
 
 joomla_data="/var/lib/docker/volumes/joomla/_data"
-#sudo mkdir $joomla_data
-#sudo chown www-data:www-data $joomla_data
 
-# checking if archive exist
+# checking if archive 'joomla-data.tar.bz2' exist...
 if [ -f joomla-data.tar.bz2 ]; then
   echo "Extracting data from 'joomla-data.tar.bz2' to volume 'joomla'..."
   sudo tar -xpjf joomla-data.tar.bz2 -C $joomla_data
@@ -25,17 +23,9 @@ else
   exit
 fi
 
-#mkdir joomla-data
-#sudo tar -xpjf joomla-data.tar.bz2 -C joomla-data
-
-#sudo rm -r /var/lib/docker/volumes/joomla/_data
-#sudo cp -rp joomla-data/ /var/lib/docker/volumes/joomla/_data
 
 # just for first launch of containers 
 [ "$(docker volume ls | grep db)" ] && echo "Volume 'db' exist..." || docker volume create db
-
-#sudo rm -r /var/lib/docker/volumes/db/_data
-#sudo cp -rp db-data/ /var/lib/docker/volumes/db/_data
 
 
 docker-compose up -d --build
@@ -47,13 +37,13 @@ sleep 15 # time needed for mounting volumes... for getting instalation/ dir avai
 install=/var/lib/docker/volumes/joomla/_data/installation
 if sudo test -d $install; then
   sudo rm -rf $install 
-  echo "'installation/' has been removed..."  
+  echo "Dir '$install' has been removed..."  
 else
-  echo "'installation/' does not exist..."
+  echo "Dir '$install' does not exist..."
 fi
 
 
-
+# restoring DB...
 if [ -f "joomla_db.sql" ]; then
       echo "Restoring DB from a backup: 'joomla_db.sql'..."
       ./restore-db.sh
