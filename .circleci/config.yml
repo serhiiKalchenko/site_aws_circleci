@@ -1,3 +1,22 @@
+
+
+executors: # you can deploy using all of these executors;)
+  docker_base_edge:
+    docker:
+      - image: cimg/base:edge
+  docker_base_stable:
+    parameters:
+      version:
+        type: string
+        default: 2020.11
+    docker:
+      - image: cimg/base:stable-<< parameters.version >>
+  machine_ubuntu_2004:
+    machine:
+      - image: ubuntu-2004:202010-01
+       
+
+
 commands: # a reusable command with parameters
    deploy:
       parameters:
@@ -26,8 +45,10 @@ commands: # a reusable command with parameters
 version: 2.1
 jobs:
   Deploy_Joomla_site_on_AWS:
-    docker: 
-      - image: cimg/base:edge
+    parameters:
+      exec:
+        type: executor
+    executor: << parameters.exec >>
     steps:
       - checkout
       - run:
@@ -46,4 +67,12 @@ workflows:
   version: 2
   my_workflow:
     jobs:
-      - Deploy_Joomla_site_on_AWS
+      - Deploy_Joomla_site_on_AWS:
+          exec: docker_base_edge
+      - Deploy_Joomla_site_on_AWS:
+          exec: 
+            name: docker_base_stable
+            version: 2020.04
+            
+      - Deploy_Joomla_site_on_AWS:
+          exec: machine_ubuntu_2004
