@@ -35,11 +35,11 @@ Deploy site on Joomla using CircleCI!
   * you can make an alias in bash:
   	* nano ~/.bashrc; alias gitpush='git commit -a -m "update..." ; git push origin main'
 
-## Site configuration:
-	* credentials for site administration (http://your_ip_address/administrator): admin/admin
-	* The site (CMS Joomla) is absolutely clean, after installation as is 
-	* (only credentials to database are configured: docker-compose.yml)
-	* dir joomla-data/sample/ - just sample of html-pages
+## Site configuration & credentials:
+    * credentials for site administration (http://your_ip_address/administrator): admin/admin
+    * credentials for db access are in `docker-compose.yml`
+    * The site (CMS Joomla) is absolutely clean, after installation as is
+    * Dir sample/ - just sample of html-pages
 	
 ## .circleci
 I have different versions of config.yml for better understanding in educational purposes.
