@@ -4,11 +4,11 @@ executors: # you can deploy using all of these executors;)
       - image: cimg/base:edge
   docker_base_stable:
     parameters:
-      image:
+      version:
         type: string
-        default: cimg/base:stable
+        default: ""
     docker:
-      - image: << parameters.image >>
+      - image: cimg/base:stable<< parameters.version >>
 
 commands: # a reusable command with parameters
    deploy:
@@ -39,9 +39,9 @@ version: 2.1
 jobs:
   Deploy_Joomla_site_on_AWS:
     parameters:
-      exec:
+      env:
         type: executor
-    executor: << parameters.exec >>
+    executor: << parameters.env >>
     steps:
       - checkout
       - run:
@@ -61,6 +61,10 @@ workflows:
   my_workflow:
     jobs:
       - Deploy_Joomla_site_on_AWS:
-          exec: docker_base_edge
+          env: docker_base_edge
       - Deploy_Joomla_site_on_AWS:
-          exec: docker_base_stable
+          env: 
+            name: docker_base_stable
+            version: "-18.04"
+          requires:
+            - Deploy_Joomla_site_on_AWS
