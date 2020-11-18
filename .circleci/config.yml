@@ -94,7 +94,7 @@ workflows:
       - Deploy_using_container_environment:
           env:
             name: docker_base_stable
-            version: "-18:04"
+            version: "-18.04"
             
       - Deploy_using_VM_environment:
           env: 
